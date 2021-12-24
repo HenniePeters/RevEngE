@@ -10,6 +10,8 @@ I thought that this was a real good idea, something I could use myself. So I imm
 
 Because I work on Linux myself I made it working on a Lubuntu system already. I've tried to do much coding in preparation to compile it on Windows but there will be plenty of errors because I do not have a working installation of C::B on Windows. I tried to install it in a virtual machine but even a newly generated project with wxWidgets will not compile free of errors. All help to make this project work in Windows is really appreciated. 
 
+As a last resort I've created the windows version in Borland C++Builder 6, a windows executable is available now.
+
 A demonstration video for the tool: https://youtu.be/EJqDZQXWfjQ
 
 https://www.patreon.com/hennep
