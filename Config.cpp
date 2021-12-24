@@ -36,21 +36,21 @@ void AppConfigData::Save( void ) {
         wcstombs( mbstring, wxsConfigPath.wc_str(), 512 );
         filestr.open( mbstring );
         if( filestr.is_open() ) {
-            wxsTemp = _("Load1 = ") + _(Options["Load1"].c_str()) + _("\n");
+            wxsTemp = _( "Load1 = " ) + _( Options["Load1"].c_str() ) + _( "\n" );
             filestr.write( wxsTemp.c_str(), wxsTemp.size() );
-            wxsTemp = _("Load2 = ") + _(Options["Load2"].c_str()) + _("\n");
+            wxsTemp = _( "Load2 = " ) + _( Options["Load2"].c_str() ) + _( "\n" );
             filestr.write( wxsTemp.c_str(), wxsTemp.size() );
-            wxsTemp = _("Latest1 = ") + _(Options["Latest1"].c_str()) + _("\n");
+            wxsTemp = _( "Latest1 = " ) + _( Options["Latest1"].c_str() ) + _( "\n" );
             filestr.write( wxsTemp.c_str(), wxsTemp.size() );
-            wxsTemp = _("Latest2 = ") + _(Options["Latest2"].c_str()) + _("\n");
+            wxsTemp = _( "Latest2 = " ) + _( Options["Latest2"].c_str() ) + _( "\n" );
             filestr.write( wxsTemp.c_str(), wxsTemp.size() );
             filestr.close();
         } else {
-            if( wxsConfigPath == _("") ) {
-                wxsTemp = _("mkdir ");
+            if( wxsConfigPath == _( "" ) ) {
+                wxsTemp = _( "mkdir " );
                 wxsTemp += wxsConfigDirCandidate;
                 wcstombs( mbstring, wxsTemp.wc_str(), 512 );
-                system(mbstring);
+                system( mbstring );
                 wxsConfigPath = wxsConfigPathCandidate;
                 wcstombs( mbstring, wxsConfigPath.wc_str(), 512 );
                 std::ofstream output( mbstring, std::ios::out | std::ios::app );
@@ -63,10 +63,10 @@ void AppConfigData::Save( void ) {
     }
 }
 
-AppConfigData::AppConfigData( wxString wxAppName ) {
+AppConfigData::AppConfigData( const char *sAppName ) {
     bConfigPath = false;
     std::ifstream filestr;
-    wxString wxsTempFile = _( "/etc/" ) + wxAppName + _( ".conf" );
+    wxString wxsTempFile = _( "/etc/" ) + _( sAppName ) + _( ".conf" );
     char mbstring[513];
     wcstombs( mbstring, wxsTempFile.wc_str(), 512 );
     filestr.open( mbstring );
@@ -78,16 +78,16 @@ AppConfigData::AppConfigData( wxString wxAppName ) {
     } else {
 #if defined(__WXMSW__)
         wxString wxsHome = _( getenv( "APPDATA" ) );
-        wxString wxsTempFile = _( "~/" ) + wxAppName + _( "/" );
+        wxString wxsTempFile = _( "~/" ) + _(sAppName) + _( "/" );
         wxsTempFile.Replace( _( "~" ), wxsHome, false );
         wxsConfigDirCandidate = wxsTempFile;
-        wxsTempFile += _( "/" ) + wxAppName + _( ".ini" );
+        wxsTempFile += _( "/" ) + _(sAppName) + _( ".ini" );
 #elif defined(__UNIX__)
         wxString wxsHome = _( getenv( "HOME" ) );
-        wxString wxsTempFile = _( "~/.config/" ) + wxAppName;
+        wxString wxsTempFile = _( "~/.config/" ) + _( sAppName );
         wxsTempFile.Replace( _( "~" ), wxsHome, false );
         wxsConfigDirCandidate = wxsTempFile;
-        wxsTempFile += _( "/" ) + wxAppName + _( ".conf" );
+        wxsTempFile += _( "/" ) + _( sAppName ) + _( ".conf" );
 #endif
         wcstombs( mbstring, wxsTempFile.wc_str(), 512 );
         wxsConfigPathCandidate = wxsTempFile;

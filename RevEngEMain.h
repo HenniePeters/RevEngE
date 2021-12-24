@@ -10,16 +10,13 @@
 #ifndef REVENGEMAIN_H
 #define REVENGEMAIN_H
 
-#define HOTKEY_ID_1 0x3000		// any value between 0 and 0xBFFF
-#define HOTKEY_ID_2 0x3001		// any value between 0 and 0xBFFF
-
 //(*Headers(RevEngEFrame)
 #include <wx/bitmap.h>
 #include <wx/filedlg.h>
 #include <wx/frame.h>
 #include <wx/image.h>
 #include <wx/menu.h>
-#include <wx/statbmp.h>
+#include <wx/stattext.h>
 //*)
 
 class RevEngEFrame: public wxFrame {
@@ -31,16 +28,18 @@ private:
     //(*Handlers(RevEngEFrame)
     void OnQuit( wxCommandEvent& event );
     void OnAbout( wxCommandEvent& event );
+    void OnHowto( wxCommandEvent& event );
     void OnClose( wxCloseEvent& event );
     //*)
 
     //(*Identifiers(RevEngEFrame)
-    static const long ID_STATICBITMAP1;
+    static const long ID_STATICTEXT1;
     static const long ID_MENU_LOAD1;
     static const long ID_MENU_LOAD2;
     static const long ID_MENU_LATEST;
     static const long ID_MENUITEM1;
     static const long idMenuAbout;
+    static const long idMenuHowto;
     //*)
 
     //(*Declarations(RevEngEFrame)
@@ -52,9 +51,10 @@ private:
     wxImage               *Image2;
     wxImage               *Image3;
     wxMenuItem* MenuItem3;
+    wxMenuItem* MenuItem4;
     wxMenuItem* MenuItem5;
     wxMenuItem* MenuItem6;
-    wxStaticBitmap* StaticBitmap1;
+    wxStaticText* StaticText1;
     //*)
 
     bool bImageReady1 = false, bImageReady2 = false;
@@ -64,7 +64,7 @@ private:
     wxString wxsImage1, wxsImage2;
 
     void OnScroll( wxMouseEvent &event );
-    void OnSize(wxSizeEvent& event);
+    void OnSize( wxSizeEvent& event );
     void OnLoad1( wxCommandEvent& evt );
     void OnLoad2( wxCommandEvent& evt );
     void OnLoadLatest( wxCommandEvent& evt );
